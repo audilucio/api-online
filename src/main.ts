@@ -8,7 +8,7 @@ async function bootstrap() {
   app.enableCors();
 
   const config = new DocumentBuilder()
-    .setTitle('API Monitoramento')
+    .setTitle('API')
     .setDescription('Documentação da API')
     .setVersion('1.0')
     .build();
