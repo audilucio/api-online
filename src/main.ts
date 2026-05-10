@@ -1,27 +1,21 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const core_1 = require("@nestjs/core");
+const app_module_1 = require("./app.module");
+const swagger_1 = require("@nestjs/swagger");
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-
-  app.enableCors();
-
-  const config = new DocumentBuilder()
-    .setTitle('API')
-    .setDescription('Documentação da API')
-    .setVersion('1.0')
-    .build();
-
-  const document = SwaggerModule.createDocument(app, config);
-
-  SwaggerModule.setup('docs', app, document);
-
-  const port = process.env.PORT || 3000;
-
-  await app.listen(port, '0.0.0.0');
-
-  console.log(`Servidor online na porta ${port}`);
+    const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    app.enableCors();
+    const config = new swagger_1.DocumentBuilder()
+        .setTitle('API')
+        .setDescription('Documentação da API')
+        .setVersion('1.0')
+        .build();
+    const document = swagger_1.SwaggerModule.createDocument(app, config);
+    swagger_1.SwaggerModule.setup('docs', app, document);
+    const port = process.env.PORT || 3000;
+    await app.listen(port, '0.0.0.0');
+    console.log(`Servidor online na porta ${port}`);
 }
-
 bootstrap();
+//# sourceMappingURL=main.js.map
